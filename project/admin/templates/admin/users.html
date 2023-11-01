@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-container">
+  <h1>List of Users</h1>
+
+  <table class="admin-table">
+    <!-- Table Header Row -->
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Registration Date</th>
+        <th>Email Confirmation Date</th>
+        <th>User Type</th>
+        <th># of Journal Entries</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <!-- Table Elements (Rows) -->
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td class="table-field-multiple-elements">
+            <p>{{ user.email }}</p>
+            <a href="{{ url_for('admin.admin_change_password', index=user.id) }}">Change Password</a>
+          </td>
+          <td>{{ user.registered_on.strftime("%Y-%m-%d") }}</td>
+          <td class="table-field-multiple-elements">
+            {%  if user.email_confirmed %}
+              <p>{{ user.registered_on.strftime("%Y-%m-%d") }}</p>
+              <a href="{{ url_for('admin.admin_unconfirm_email', index=user.id) }}">Un-confirm Email</a>
+            {% else %}
+              <p>-</p>
+              <a href="{{ url_for('admin.admin_confirm_email', index=user.id) }}">Confirm Email</a>
+            {% endif %}
+          </td>
+          <td>{{ user.user_type }}</td>
+          <td>{{ user.number_of_journal_entries }}</td>
+          <td class="table-field-multiple-elements admin-actions">
+            <p><a href="{{ url_for('admin.admin_revoke_token', index=user.id) }}">Revoke Token</a></p>
+            <p><a href="{{ url_for('admin.admin_delete_user', index=user.id) }}">Delete User</a></p>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+
+  </table>
+</div>
+{% endblock %}

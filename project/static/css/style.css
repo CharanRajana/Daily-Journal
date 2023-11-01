@@ -1,0 +1,278 @@
+:root {
+  --bg-color: #F1F1F1;
+  --font-color: #191919;
+}
+
+
+/*******************
+ * Overall Styling *
+ *******************/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-family: sans-serif;
+}
+
+
+/******************
+ * Header Styling *
+ ******************/
+
+header {
+  text-align: center;
+  background-color: #121212;
+  padding: 24px 0;
+}
+
+header h2 {
+  color: white;
+}
+
+
+/*******************
+ * Message Styling *
+ *******************/
+.close-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s;
+  background: var(--font-color);
+  line-height: 1;
+  color: white;
+}
+
+.close-btn svg {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+}
+
+.close-btn:hover {
+  background: white;
+  color: black;
+}
+
+.flash-message {
+  background: #38CFD9;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  transition: opacity 1.0s;
+}
+
+.flash-message p,
+.flash-message span {
+  font-size: 1.1rem;
+}
+
+.flash-message-error {
+  background: red;
+  color: white;
+}
+
+.flash-message-success {
+  background: green;
+  color: white;
+}
+
+.flash-message-info {
+  background: blue;
+  color: white;
+}
+
+
+/****************
+ * Main Styling *
+ ****************/
+main {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+
+/******************
+ * Footer Styling *
+ ******************/
+footer {
+  text-align: center;
+}
+
+
+/****************
+ * Form Styling *
+ ****************/
+.form-wrap {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 30rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 1rem;
+}
+
+.form__title {
+  margin-bottom: 1.75rem;
+}
+
+.form__group {
+  position: relative;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.form__input {
+  width: 100%;
+  height: 100%;
+  border: 2px solid lightgray;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 1.1rem;
+  color: inherit;
+  outline: none;
+  padding: 1.25rem;
+  background: none;
+}
+
+.form__input:hover, .form__input:focus {
+  border-color: darkblue;
+}
+
+.form__label {
+  position: absolute;
+  left: 1rem;
+  top: 0.9rem;
+  padding: 0 0.5rem;
+  background-color: white;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+}
+
+.form__button {
+  padding: 0.75rem 2rem;
+  background-color: blue;
+  color: white;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 1.0rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease-in, color 200ms ease-in;
+}
+
+.form__button:hover {
+  background-color: #0101a2;
+  /*color: black;*/
+}
+
+.form__checkbox {
+  padding-bottom: 1.0rem;
+}
+
+/*
+1. When the input is in the focus state
+reduce the size of the label and move upwards
+
+2. Keep label state when content is in input field
+*/
+
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+  top: -0.5rem;
+  left: 0.8rem;
+  font-size: 0.8rem;
+}
+
+.validation-error {
+  color: red;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 0.8rem;
+}
+
+/* Change Autocomplete styles in Chrome to match form style*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+
+/*********
+ * Admin *
+ *********/
+.admin-table a {
+  display:inline-block;
+  padding:0.3em 0.7em;
+  margin:0 0.1em 0.3em 0;
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-weight: 500;
+  color:#FFFFFF;
+  background-color:#4eb5f1;
+  text-align:center;
+  transition: all 0.2s;
+  margin-top: 0.3rem;
+}
+
+.admin-table a:hover{
+  background-color:#4095c6;
+}
+
+.admin-table a:visited {
+  color:#FFFFFF;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+td {
+  padding: 0.2rem 0.5rem;
+  text-align: center;
+}
+
+th {
+  padding: 1.0rem 0.8rem;
+  border-top: 2px solid #DDD;
+  border-bottom: 4px solid #DDD;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #F9F9F9;
+}
+
+.table-field-multiple-elements {
+  text-align: center;
+}
+
+.table-field-multiple-elements:first-child {
+  padding-bottom: 0.5rem;
+}
